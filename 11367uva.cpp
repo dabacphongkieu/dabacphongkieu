@@ -31,12 +31,8 @@ void dijkstra(){
 	pq.push(make_tuple(d[u][0], u, 0));
 	while(pq.size()){
 		m1 = pq.top();
-//		cout << get<1>(m1) <<" get<1>(m1) get<2>(m1)"<<get<2>(m1)<<"\n";
 		pq.pop();
-//		getch();
 		if(get<1>(m1) == v){
-//			cout << "EM co vao roi\n";
-//			getch(); 
 			cout << get<0>(m1) <<"\n";
 			while(pq.size()) pq.pop();
 			break;
@@ -52,7 +48,6 @@ void dijkstra(){
 		
 		// Hoac nhay sang mot node lien ke
 		for(auto i : son_in_law[get<1>(m1)]){
-//			cout << "cha "<<get<1>(m1)<<" con"<<i.ff<<"\n";
 			w = get<2>(m1) - i.ss;
 			if(w >= 0 && d[i.ff][w] > get<0>(m1)){
 				d[i.ff][w] = get<0>(m1);
@@ -64,8 +59,8 @@ void dijkstra(){
 }
 
 int main() {
-	freopen("PERFECT1.inp", "r", stdin);
-	freopen("PERFECT1.out", "w", stdout);	
+//	freopen("PERFECT1.inp", "r", stdin);
+//	freopen("PERFECT1.out", "w", stdout);	
 	cin >> m >> n;
 	for1(i,0,m-1) cin >> a[i];
 	
