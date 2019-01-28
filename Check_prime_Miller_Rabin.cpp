@@ -59,7 +59,7 @@ bool check(ll a){
 	cout << check_prime(a);	
 }
 int main() {
-	
+
 }
 
 
