@@ -110,8 +110,8 @@ int main() {
 		cout<<":Bao duoi\nBao tren:";
 		while(stk.size()){cout<<stk.top()<<" ";stk.pop();}
 */
-		while(stk1.size()!=1){b=stk1.top();stk1.pop();up[{stk1.top().X,stk1.top().Y}]=b;/*cout<<up[{stk1.top().X,stk1.top().Y}]<<" ";*/sum+=abs(b-stk1.top());}
-		while(stk.size()!=1){b=stk.top();stk.pop();up[{b.X,b.Y}]=stk.top();/*cout<<up[{b.X,b.Y}]<<" ";*/sum+=abs(b-stk.top());}
+		while(stk1.size()!=1){b=stk1.top();stk1.pop();up[{stk1.top().X,stk1.top().Y}]=b;sum+=abs(b-stk1.top());}
+		while(stk.size()!=1){b=stk.top();stk.pop();up[{b.X,b.Y}]=stk.top();sum+=abs(b-stk.top());}
 		stk.pop();stk1.pop();
 		printf("%.2lf\n",sum);
 		while(check[{exact.X,exact.Y}]==0){
