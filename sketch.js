@@ -76,14 +76,14 @@ let arr = [];
 let chain = [];
 let w = 800;
 let h = 800;
-let xx = [w / 4, 3 * w / 4, w / 4, 3 * w / 4];
-let yy = [h / 4 + 45, h / 4 + 45, 3 * h / 4 + 45, 3 * h / 4 + 45];
+let xx = [w / 4-30, 3 * w / 4-30, w / 4-30, 3 * w / 4-30];
+let yy = [h / 4-10, h / 4-10, 3 * h / 4-10, 3 * h / 4-10];
 // creating picture
 
 function setup() {
   is = random(colour);
 
-  createCanvas(800, 800);
+  createCanvas(720, 720);
   sound.playMode('restart');
   sound.setVolume(0.9);
   sound.play();
@@ -92,45 +92,45 @@ function setup() {
   
   //restart button
   button = createButton(' restart ');
-  button.position(650, 20);
-  button.size(60, 60);
+  button.position(650-60, 10);
+  button.size(50, 50);
   button.mousePressed(restart);
   
   // creating game_rules  button 
   how = createButton('How to play');
-  how.position(10, 20);
-  how.size(60, 60);
+  how.position(10, 10);
+  how.size(50, 50);
   how.mousePressed(Game_Guild);
   how.mouseReleased(Game_continue);
   
   //creating hint button
-  hint = createButton('GOT STUCK ?');
-  hint.position(100, 20);
-  hint.size(60, 60);
+  hint = createButton('got stuck ?');
+  hint.position(100, 10);
+  hint.size(50, 50);
   hint.mousePressed(Solution);
   hint.mouseReleased(Game_continue);
   
   //creating difficulty button
   harder = createButton('lvl  up');
-  harder.position(590, 20);
+  harder.position(590-60, 10);
   harder.size(50, 50);
   harder.mousePressed(up);
   
   easier = createButton('lvl down');
-  easier.position(720, 20);
+  easier.position(720-60, 10);
   easier.size(50, 50);
   easier.mousePressed(down);
   
   //creating stage button
-  stage = createButton('STAGE');
-  stage.position(180, 20);
-  stage.size(60, 60);
+  stage = createButton('stage');
+  stage.position(180, 10);
+  stage.size(50, 50);
   stage.mousePressed(standing);
   stage.mouseReleased(Game_continue);
   
   //creating mode change button
   reset = createButton('reset');
-  reset.position(530, 20);
+  reset.position(530-60, 10);
   reset.size(50, 50);
   reset.mousePressed(gameset);
   play();
@@ -138,12 +138,12 @@ function setup() {
 // creating nodes position
 function play() {
   for (let i = 0; i < 4; ++i) {
-    arr[i] = new node(random(colour), "?", xx[i], yy[i], 100);
+    arr[i] = new node(random(colour), "?", xx[i], yy[i], 70);
   }
   //create basic node
   for (let i = 0; i < 4; ++i) {
     for (let j = 1; j < 5; ++j) {
-      arr[i + 4 * j] = new node(random(colour), random(alphabet), 0, 0, 100)
+      arr[i + 4 * j] = new node(random(colour), random(alphabet), 0, 0, 70)
       if (j == 1) {
         arr[i + j * 4].x = arr[i].x - width / 8;
         arr[i + j * 4].y = arr[i].y - height / 8;
@@ -229,7 +229,7 @@ function draw() {
 
   if(frameCount % 6 == 0)
   {
-  image(back,width-back.width/18*(1+(i-1)/2),height-back.height/18*(1+(i-1)/2),back.width*i/18,back.height*i/18);
+  image(back,width-back.width/18*(1+(i-1)/2)*9/10,height-back.height/18*(1+(i-1)/2)*9/10,back.width*i/18*9/10,back.height*i/18*9/10);
    i += 0.1*a;
   a++;
 
@@ -238,9 +238,9 @@ function draw() {
   //level details
   fill(255);
   textSize(25);
-  text('Current level :', 360, 50);
+  text('Current level :', 330, 30);
   fill(op[mode - 1]);
-  text(diff, 460, 50);
+  text(diff, 420, 30);
   fill(190)
   textSize(50);
 
@@ -308,20 +308,20 @@ function Game_Guild() {
   frameRate(0);
   background(0);
   fill(255);
-  textSize(25);
+  textSize(20);
   text('Rules :', width / 2, 30);
   text('- Change the set into number .... ', 200, 100);
-  text('- Assume that A  number tis 0 ,B num is 1 ,... so Z num is 25', 300, 200);
+  text('- Assume that A  number tis 0 ,B num is 1 ,... so Z num is 25', 310, 150);
   text('- Consider the center node in the five_node set ', 300, 250);
-  text('- There are only add and minus in the equation between  nodes',400,450);
   text('- Look for the relation between four nodes (or NOT) to get the answer !', 400, 300);
-
+  text('- There are only add and minus in the equation between  nodes',400,450);
+  
   text('- Watch out :(Except first mode) The rules never stay the same !', 400, 2 * height / 3);
   text('- press on STAGE button to see the rules change in your current stage ',400,3* height/4);
   text('- At level n , you may have to count the equation of n nodes \n which its numerical order is [1..4]',400,375);
-  text('- The correct answer is the final result divided by 26 \n if your answer is negative ,then add 26 until it is positive',400,650);
+  text('- The correct answer is the final result divided by 26 \n if your answer is negative ,then add 26 until it is positive',400,630);
   text('There is only one attempt each game , becareful ',width/2,height -40);
-  text('Example : Hold Esc ',width/2,height-80);
+  text('Example : Hold Esc ',width/2,height-130);
 }
 
 //back to game
