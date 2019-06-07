@@ -1,3 +1,4 @@
+// simplified background for lower CPU 
 //create checker to output final screen
 let ans = 0;
 // set up difficulty 
