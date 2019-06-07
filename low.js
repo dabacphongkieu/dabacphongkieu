@@ -221,31 +221,10 @@ function draw() {
 
   
   background(0);
-  //calling animation (only for full version)
-  //if(frameCount % 6 == 0)
-  //{
-  //image(back,width-back.width/18*(1+(i-1)/2)*9/10,height-back.height/18*(1+(i-1)/2)*9/10,back.width*i/18*9/10,back.height*i/18*9/10);
-   //i += 0.1*a;
-  //a++;
-
-   //}
-  //if(i >= 20)
-   //{
-     //frameRate(1);
-    //back.width = 14400;
-   //back.height = 14400;
-   //i = 1;
-   //a=1;
-
-  //}
-  
-  
-  
-  //level details
-   
-  //eye.position(width/2-eye.width/2,height/2-eye.height/2);
   image(back,360-500,360-500);
   fill(255);
+  
+  //level information
   textSize(25);
   text('Current level :', 330, 30);
   fill(op[mode - 1]);
@@ -342,7 +321,7 @@ function Game_continue() {
 function Solution() {
   frameRate(0);
   background(random(220), random(220), random(220));
-  text(result,width/2,height/2);
+  text(result,width/2,height/2+20);
   textSize(25);
   text('The result is the sum of nodes with the order below : ', 400, 300);
   textSize(200 / diff);
@@ -354,12 +333,9 @@ function Solution() {
 
 //lvl up
 function up() {
-
-
   diff++;
   init();
   restart();
-
 }
 
 //lvl down
