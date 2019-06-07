@@ -3,7 +3,7 @@
 let ans = 0;
 // set up difficulty 
 let diff = 1;
-//animation crate
+//animation and background creating 
 let example, back,sound,lose;
 //stage information
 let op = ['green', 'blue', 'yellow', 'red'];
@@ -11,11 +11,10 @@ let stat = ['Original game', 'Expert', 'Master', 'TOURIST'];
 let mode = 1;
 //create game's setting + torturial button
 var harder, easier;
-
 var button, how, hint, stage, reset;
-//game correct answer 
+//create game correct answer 
 var result = "ABCD";
-//create class NODE
+//load imageand sound  
 function preload() 
 {
   soundFormats('mp3','ogg');
@@ -24,6 +23,7 @@ function preload()
   example = loadImage('ow.png');
   lose = loadImage('LOSE.png');
 }
+//create class NODE
 class node {
   constructor(color, key, x, y, size) {
     this.color = color;
@@ -66,6 +66,7 @@ function init() {
     comma[i] = 1;
   }
 }
+
 init();
 
 // set up for games details
@@ -136,6 +137,7 @@ function setup() {
   reset.mousePressed(gameset);
   play();
 }
+
 // creating nodes position
 function play() {
   for (let i = 0; i < 4; ++i) {
@@ -255,7 +257,7 @@ function draw() {
       fill("white");
       textSize(50);
       textAlign(CENTER, CENTER)
-
+     
       if (i == 3 && j == 0) {
         chain[i].node[j].key = fun;
         // return game result 
@@ -296,7 +298,6 @@ function draw() {
   if (ans == 1) {
     background(20, 248, 7);
     fill(random(220), random(220), random(220));
-    //  image(win_image,0,0,width,height);
     text('CONGRATS', width / 2, height / 2 - 100);
     fill(0);
     textSize(25);
@@ -334,7 +335,7 @@ function Game_continue() {
 function Solution() {
   frameRate(0);
   background(random(220), random(220), random(220));
-  text(result,width/2,height/2);
+  text(result,width/2,height/2+20);
   textSize(25);
   text('The result is the sum of nodes with the order below : ', 400, 300);
   textSize(200 / diff);
@@ -346,12 +347,9 @@ function Solution() {
 
 //lvl up
 function up() {
-
-
   diff++;
   init();
   restart();
-
 }
 
 //lvl down
