@@ -2,11 +2,11 @@
 Trần Ngọc Long HSGS 2003
 
 Game S02 được tạo ra với 2 phiên bản : đầy đủ cho máy có RAM >= 4gb hay có gần 3/4 gb ram thỏa mãn , low version cho máy có ram yếu hơn 
-Ver full : sketch.js
+Ver full : sketch.js , 
 Ver simplified : low.js
 
 file ảnh background mỗi version : 
-sketch.js == ani1.png 
+sketch.js == ani1.png ,  
 low.js == low ani1.png
 TẤT CẨc các file ảnh còn lại đều có trong 2 version .
 
