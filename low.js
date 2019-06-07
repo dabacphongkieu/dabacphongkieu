@@ -19,7 +19,8 @@ function preload()
 {
   soundFormats('mp3','ogg');
   sound = loadSound('Horror-Game-Intro.mp3');
-   back = loadImage('ani1.png');
+ 
+   back = loadImage('low ani1.png');
   example = loadImage('ow.png');
   lose = loadImage('LOSE.png');
 }
@@ -82,7 +83,8 @@ let yy = [h / 4-10, h / 4-10, 3 * h / 4-10, 3 * h / 4-10];
 
 function setup() {
   is = random(colour);
-
+  //eye.size(150,150);
+  
   createCanvas(720, 720);
   sound.playMode('restart');
   sound.setVolume(0.9);
@@ -216,26 +218,32 @@ let a = 1;
 //game display
 function draw() {
 
-  //calling animation
   
-  if(i >= 20)
-   {
-    back.width = 14400;
-   back.height = 14400;
-   i = 1;
-   a=1;
+  background(0);
+  //calling animation (only for full version)
+  //if(frameCount % 6 == 0)
+  //{
+  //image(back,width-back.width/18*(1+(i-1)/2)*9/10,height-back.height/18*(1+(i-1)/2)*9/10,back.width*i/18*9/10,back.height*i/18*9/10);
+   //i += 0.1*a;
+  //a++;
 
-  }
+   //}
+  //if(i >= 20)
+   //{
+     //frameRate(1);
+    //back.width = 14400;
+   //back.height = 14400;
+   //i = 1;
+   //a=1;
 
-  if(frameCount % 6 == 0)
-  {
-  image(back,width-back.width/18*(1+(i-1)/2)*9/10,height-back.height/18*(1+(i-1)/2)*9/10,back.width*i/18*9/10,back.height*i/18*9/10);
-   i += 0.1*a;
-  a++;
-
-   }
+  //}
+  
+  
   
   //level details
+   
+  //eye.position(width/2-eye.width/2,height/2-eye.height/2);
+  image(back,360-500,360-500);
   fill(255);
   textSize(25);
   text('Current level :', 330, 30);
@@ -289,7 +297,7 @@ function draw() {
 
     fill('red');
     textSize(25);
-    text('Press the button to start :', 400, 3 * height / 4);
+    text('Press restart button to start :', 400, 3 * height / 4);
 
   }
   if (ans == 1) {
@@ -299,7 +307,7 @@ function draw() {
     text('CONGRATS', width / 2, height / 2 - 100);
     fill(0);
     textSize(25);
-    text('Press the button to start :', 400, 3 * height / 4);
+    text('Press restart button to start :', 400, 3 * height / 4);
   }
 }
 
