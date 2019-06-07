@@ -3,7 +3,7 @@ let ans = 0;
 // set up difficulty 
 let diff = 1;
 //animation crate
-let example, back;
+let example, back,sound,lose;
 //stage information
 let op = ['green', 'blue', 'yellow', 'red'];
 let stat = ['Original game', 'Expert', 'Master', 'TOURIST'];
@@ -17,8 +17,11 @@ var result = "ABCD";
 //create class NODE
 function preload() 
 {
+  soundFormats('mp3','ogg');
+  sound = loadSound('Horror-Game-Intro.mp3');
    back = loadImage('ani1.png');
   example = loadImage('ow.png');
+  lose = loadImage('LOSE.png');
 }
 class node {
   constructor(color, key, x, y, size) {
@@ -63,7 +66,9 @@ function init() {
   }
 }
 init();
+
 // set up for games details
+
 let colour = ["purple", "red", "black", "green", "blue"]
 let is = 0;
 let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
@@ -73,13 +78,16 @@ let w = 800;
 let h = 800;
 let xx = [w / 4, 3 * w / 4, w / 4, 3 * w / 4];
 let yy = [h / 4 + 45, h / 4 + 45, 3 * h / 4 + 45, 3 * h / 4 + 45];
-// creating picture 
+// creating picture
+
 function setup() {
   is = random(colour);
 
   createCanvas(800, 800);
-  //loading theme animation
- 
+  sound.playMode('restart');
+  sound.setVolume(0.9);
+  sound.play();
+  sound.setLoop(true);
   //creating new games button
   
   //restart button
@@ -132,6 +140,7 @@ function play() {
   for (let i = 0; i < 4; ++i) {
     arr[i] = new node(random(colour), "?", xx[i], yy[i], 100);
   }
+  //create basic node
   for (let i = 0; i < 4; ++i) {
     for (let j = 1; j < 5; ++j) {
       arr[i + 4 * j] = new node(random(colour), random(alphabet), 0, 0, 100)
@@ -150,6 +159,7 @@ function play() {
       }
     }
   }
+  //add to graph
   chain[0] = new papa(arr[0], arr[4], arr[8], arr[12], arr[16])
   chain[1] = new papa(arr[1], arr[5], arr[9], arr[13], arr[17])
   chain[2] = new papa(arr[2], arr[6], arr[10], arr[14], arr[18])
@@ -264,7 +274,7 @@ function draw() {
   //game result display
   textSize(100);
   if (ans == -1) {
-    background(0);
+    image(lose,0,0);
     fill(120, 5, 0);
     text('U LOSE', width / 2, height / 2 - 100);
     
@@ -272,6 +282,7 @@ function draw() {
     text(result, width / 2, height / 4);
     textSize(200 / diff);
     let j = 200 / diff;
+    fill('red');
     for (let i = 1; i <= diff; i++) {
       text(comma[i] * (unchar(chain[3].node[rule[i]].key) - 65), (i - 1) * width / diff + j, 3 * height / 4 + 100);
     }
