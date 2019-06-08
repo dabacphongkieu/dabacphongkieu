@@ -217,7 +217,7 @@ function draw() {
   //animation 
   push();
   blendMode(MULTIPLY);
-  fill(140,random(140),random(140));
+  fill(180,random(180),random(180));
   rect(0,0,width,height);
   rect(random(width),0,10,height);
   rect(0,random(height),width , random(10));
