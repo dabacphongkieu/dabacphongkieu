@@ -236,9 +236,10 @@ function draw() {
   for (let i = 0; i < 4; ++i) {
     for (let j = 0; j < 5; ++j) {
       fill(is);
-      
+      push();
+      blendMode(OVERLAY);
       circle(chain[i].node[j].x, chain[i].node[j].y, chain[i].node[j].size);
-
+      pop();
       fill("white");
       textSize(50);
       textAlign(CENTER, CENTER)
