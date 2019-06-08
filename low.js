@@ -1,10 +1,9 @@
-// simplified background for lower CPU 
 //create checker to output final screen
 let ans = 0;
 // set up difficulty 
 let diff = 1;
 //animation crate
-let example, back,sound,lose;
+let example, back,sound,lose,pause = 0;
 //stage information
 let op = ['green', 'blue', 'yellow', 'red'];
 let stat = ['Original game', 'Expert', 'Master', 'TOURIST'];
@@ -20,7 +19,7 @@ function preload()
 {
   soundFormats('mp3','ogg');
   sound = loadSound('Horror-Game-Intro.mp3');
- 
+// gif = createImg('QBnX.gif');
    back = loadImage('low ani1.png');
   example = loadImage('ow.png');
   lose = loadImage('LOSE.png');
@@ -104,15 +103,12 @@ function setup() {
   how.position(10, 10);
   how.size(50, 50);
   how.mousePressed(Game_Guild);
-  how.mouseReleased(Game_continue);
   
   //creating hint button
   hint = createButton('got stuck ?');
   hint.position(100, 10);
   hint.size(50, 50);
   hint.mousePressed(Solution);
-  hint.mouseReleased(Game_continue);
-  
   //creating difficulty button
   harder = createButton('lvl  up');
   harder.position(590-60, 10);
@@ -129,8 +125,6 @@ function setup() {
   stage.position(180, 10);
   stage.size(50, 50);
   stage.mousePressed(standing);
-  stage.mouseReleased(Game_continue);
-  
   //creating mode change button
   reset = createButton('reset');
   reset.position(530-60, 10);
@@ -220,11 +214,17 @@ let a = 1;
 function draw() {
 
   
-  background(0);
+  background(50);
+ 
   image(back,360-500,360-500);
+  push();
+  blendMode(MULTIPLY);
+  fill(140,random(140),random(140));
+  rect(0,0,width,height);
+  rect(random(width),0,10,height);
+  rect(0,random(height),width , random(10));
+  pop();
   fill(255);
-  
-  //level information
   textSize(25);
   text('Current level :', 330, 30);
   fill(op[mode - 1]);
@@ -236,9 +236,10 @@ function draw() {
   for (let i = 0; i < 4; ++i) {
     for (let j = 0; j < 5; ++j) {
       fill(is);
-      
+      push();
+      blendMode(OVERLAY);
       circle(chain[i].node[j].x, chain[i].node[j].y, chain[i].node[j].size);
-
+      pop();
       fill("white");
       textSize(50);
       textAlign(CENTER, CENTER)
@@ -293,14 +294,16 @@ function draw() {
 
 //guild display
 function Game_Guild() {
+  
+  pause = 1;
   frameRate(0);
   background(0);
   fill(255);
   textSize(20);
   text('Rules :', width / 2, 30);
   text('- Change the set into number .... ', 200, 100);
-  text('- Assume that A  number tis 0 ,B num is 1 ,... so Z num is 25', 310, 150);
-  text('- Consider the center node in the five_node set ', 300, 250);
+  text('- Assume that  A  number is 0 ,B num is 1 ,... so Z num is 25', 310, 150);
+  text('- Consider the center node in the five-node set ', 300, 250);
   text('- Look for the relation between four nodes (or NOT) to get the answer !', 400, 300);
   text('- There are only add and minus in the equation between  nodes',400,450);
   
@@ -310,18 +313,23 @@ function Game_Guild() {
   text('- The correct answer is the final result divided by 26 \n if your answer is negative ,then add 26 until it is positive',400,630);
   text('There is only one attempt each game , becareful ',width/2,height -40);
   text('Example : Hold Esc ',width/2,height-130);
+  text('Make sure that you turned on your caps lock before play this game' ,width/2,200);
 }
 
 //back to game
-function Game_continue() {
+function mouseClicked() {
+  if(pause == 1)
+  {
   frameRate(60);
+  }
 }
 
 //hint display
 function Solution() {
+  pause = 1;
   frameRate(0);
   background(random(220), random(220), random(220));
-  text(result,width/2,height/2+20);
+  text(result,width/2,height/2+100);
   textSize(25);
   text('The result is the sum of nodes with the order below : ', 400, 300);
   textSize(200 / diff);
@@ -333,9 +341,12 @@ function Solution() {
 
 //lvl up
 function up() {
+
+
   diff++;
   init();
   restart();
+
 }
 
 //lvl down
@@ -350,6 +361,7 @@ function down() {
 
 //stage details and explanation 
 function standing() {
+  pause = 1;
   frameRate(0);
   background(10);
   textSize(20);
