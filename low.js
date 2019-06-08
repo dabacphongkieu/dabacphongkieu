@@ -206,9 +206,6 @@ function check() {
   result = buggy;
   return (fun != '?' && fun != buggy)
 }
-//animation frequency
-let i = 1;
-let a = 1;
 
 //game display
 function draw() {
@@ -217,6 +214,7 @@ function draw() {
   background(50);
  
   image(back,360-500,360-500);
+  //animation 
   push();
   blendMode(MULTIPLY);
   fill(140,random(140),random(140));
@@ -224,6 +222,7 @@ function draw() {
   rect(random(width),0,10,height);
   rect(0,random(height),width , random(10));
   pop();
+  
   fill(255);
   textSize(25);
   text('Current level :', 330, 30);
