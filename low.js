@@ -186,9 +186,16 @@ function restart() {
 let fun = '?';
 
 function keyTyped() {
+   if(ans != 0)
+   {
+      restart();
+   }
+  else
+  {
   for (let i = 65; i <= 90; i++) {
     if (keyCode === i)
       fun = char(i);
+  }
   }
 }
 //checker engine
