@@ -284,7 +284,7 @@ function draw() {
 
     fill('red');
     textSize(25);
-    text('Press restart button to start :', 400, 3 * height / 4);
+    text('Press any key  to restart :', 400, 3 * height / 4);
 
   }
   if (ans == 1) {
@@ -294,7 +294,7 @@ function draw() {
     text('CONGRATS', width / 2, height / 2 - 100);
     fill(0);
     textSize(25);
-    text('Press restart button to start :', 400, 3 * height / 4);
+    text('Press any key to restart :', 400, 3 * height / 4);
   }
 }
 
